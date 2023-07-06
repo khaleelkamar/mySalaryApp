@@ -77,14 +77,14 @@ paths:
         in: query
         description: Financial year
         required: true
-        example: 2022
+        example: 2023
         schema:
           type: integer
       - name: ending
         in: query
         description: Financial year
         required: true
-        example: 2023
+        example: 2024
         schema:
           type: integer
     responses:
@@ -96,7 +96,7 @@ paths:
    get:
     tags:
       - salary-on contract true
-    description: An API to fetch mean, min, max for salary for records which satisfy on_contract true for provided financial year.
+    description: An API to fetch mean, min, max for salary for records which satisfy on_contract true for provided financial year(2023-april t0 2024-march).
     parameters:
       - in: header
         name: accesstoken
@@ -107,14 +107,14 @@ paths:
         in: query
         description: Financial year
         required: true
-        example: 2022
+        example: 2023
         schema:
           type: integer
       - name: ending
         in: query
         description: Financial year
         required: true
-        example: 2023
+        example: 2024
         schema:
           type: integer
     responses:
@@ -141,7 +141,7 @@ paths:
   /getSalaryStatsByDepartmentAndSubDepartment:   # Modified endpoint name
    get:
     tags:
-      - salary- by department and sub department
+      - salary-by department and sub department
     description: An API to fetch mean, min, max for salary for each department and sub-department combination.
     parameters:
         - in: header
