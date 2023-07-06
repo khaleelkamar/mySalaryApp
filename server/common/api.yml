@@ -1,0 +1,237 @@
+openapi: 3.0.1
+info:
+  title: myapp
+  description: Testapp
+  version: 1.0.0
+servers:
+- url: /api/v1
+tags:
+- name: Examples
+  description: Simple example endpoints
+- name: Specification
+  description: The swagger API specification
+paths:
+  /spec:
+    get:
+      tags:
+      - Specification
+      responses:
+        200:
+          description: Return the API specification
+          content: {}
+  /login:
+    post:
+      tags:
+      - login
+      description: Login user
+      requestBody:
+        description: an example
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/loginUser'
+        required: true
+      responses:
+        200:
+          description: Returns all examples
+          content: {}
+
+  /createSalary:
+   post:
+    tags:
+      - create salary
+    description: An API to add a new record into database.
+    parameters:
+        - in: header
+          name: accesstoken
+          required: true
+          schema:
+            type: string
+    requestBody:
+      description: Salary record details
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SalaryRecord'
+      required: true
+    responses:
+      201:
+        description: Salary record created successfully
+        content: {}
+      400:
+        description: Invalid request payload
+        content: {}
+
+  /getSalaryStats:
+   get:
+    tags:
+      - salary-provided financial year
+    description: An API to fetch mean, min, max for salary over the entire database for provided financial year.
+    parameters:
+      - in: header
+        name: accesstoken
+        required: true
+        schema:
+            type: string
+      - name: starting
+        in: query
+        description: Financial year
+        required: true
+        example: 2022
+        schema:
+          type: integer
+      - name: ending
+        in: query
+        description: Financial year
+        required: true
+        example: 2023
+        schema:
+          type: integer
+    responses:
+      200:
+        description: Returns salary statistics
+        content: {}
+
+  /getSalaryStatsOnContract:
+   get:
+    tags:
+      - salary-on contract true
+    description: An API to fetch mean, min, max for salary for records which satisfy on_contract true for provided financial year.
+    parameters:
+      - in: header
+        name: accesstoken
+        required: true
+        schema:
+            type: string
+      - name: starting
+        in: query
+        description: Financial year
+        required: true
+        example: 2022
+        schema:
+          type: integer
+      - name: ending
+        in: query
+        description: Financial year
+        required: true
+        example: 2023
+        schema:
+          type: integer
+    responses:
+      200:
+        description: Returns salary statistics
+        content: {}
+
+  /getSalaryStatsByDepartment:
+   get:
+    tags:
+      - salary-by department
+    description: An API to fetch mean, min, max for salary for each department.
+    parameters:
+        - in: header
+          name: accesstoken
+          required: true
+          schema:
+            type: string
+    responses:
+      200:
+        description: Returns salary statistics by department
+        content: {}
+
+  /getSalaryStatsByDepartmentAndSubDepartment:   # Modified endpoint name
+   get:
+    tags:
+      - salary- by department and sub department
+    description: An API to fetch mean, min, max for salary for each department and sub-department combination.
+    parameters:
+        - in: header
+          name: accesstoken
+          required: true
+          schema:
+            type: string
+    responses:
+      200:
+        description: Returns salary statistics by department and sub-department
+        content: {}
+  /getAllSalaries:
+   get:
+    tags:
+      - all salary details
+    description: Get all salary details
+    parameters:
+        - in: header
+          name: accesstoken
+          required: true
+          schema:
+            type: string
+    responses:
+      200:
+        description: Returns all salary details
+        content: {}
+      404:
+        description: No salaries found
+        content: {}
+      500:
+        description: Internal server error
+        content: {}
+  /deleteSalary/{id}:
+   get:
+    tags:
+      - delete salary
+    description: An API to delete a record from database.
+    parameters:
+      - in: header
+        name: accesstoken
+        required: true
+        schema:
+            type: string
+      - name: id
+        in: path
+        description: ID of the salary record to delete
+        required: true
+        schema:
+          type: string
+    responses:
+      200:
+        description: Record deleted successfully
+        content: {}
+      404:
+        description: Record not found
+        content: {}
+      500:
+        description: Internal server error
+        content: {}
+
+
+components:
+  schemas:
+    loginUser:
+      title: loginUser
+      required:
+        - userName
+        - password
+      type: object
+      properties:
+        userName:
+          type: string
+          example: testUser0
+        password:
+          type: string
+          example: password
+
+    SalaryRecord:
+      title: SalaryRecord
+      type: object
+      properties:
+        name:
+          type: string
+        salary:
+          type: number
+        currency:
+          type: string
+        department:
+          type: string
+        sub_department:
+          type: string
+        on_contract:
+          type: boolean
