@@ -50,7 +50,11 @@ Navigate to the project directory:
   ```
   npm run dev
   ```
+  after successfully synchronizing the database, a success message will appear
+
 2.Run the database migrations and seed data to set up the initial data:
+
+  "Open a new terminal and simultaneously run the following commands in separate terminals or terminal tabs:"
 
    ```
    npx sequelize-cli db:seed:all
