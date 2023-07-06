@@ -2,6 +2,21 @@
 
 This is a web application that allows users to manage salary records. It provides functionality for creating, deleting, and retrieving salary records, as well as generating salary statistics by department.
 
+
+## Stack
+
+NodeJS
+ExpressJS
+PostgreSQL
+Sequelize
+pino for log
+open api
+
+```
+DB NAME : myappDb
+```
+
+
 ## Installation
 
 1. Clone the repository using the following command:
