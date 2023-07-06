@@ -39,11 +39,7 @@ Navigate to the project directory:
   npm install
   ```
 
-4.Run the database migrations and seed data to set up the initial data:
 
-   ```
-   npx sequelize-cli db:seed:all
-   ```
   
 
 
@@ -54,6 +50,11 @@ Navigate to the project directory:
   ```
   npm run dev
   ```
+2.Run the database migrations and seed data to set up the initial data:
+
+   ```
+   npx sequelize-cli db:seed:all
+   ```
 
   This will start the server on http://localhost:3000.
 
