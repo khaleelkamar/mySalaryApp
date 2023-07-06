@@ -1,97 +1,68 @@
-# myapp
+# MySalaryApp
 
-Testapp
+This is a web application that allows users to manage salary records. It provides functionality for creating, deleting, and retrieving salary records, as well as generating salary statistics by department.
 
-## Quick Start
+## Installation
 
-Get started developing...
+1. Clone the repository using the following command:
 
-```shell
-# install deps
-npm install
+   ```bash
+   git clone https://github.com/khaleelkamar/mySalaryApp.git
 
-# run in development mode
-npm run dev
+2.Create a PostgreSQL database named "myappDb" to store the application data.
 
-# run tests
-npm run test
+Navigate to the project directory:
+
+ ```
+ cd mySalaryApp
+
+ ```
+
+3.Install the project dependencies:
+
+  ```
+  npm install
+  ```
+
+4.Run the database migrations and seed data to set up the initial data:
+
+   ```
+   npx sequelize-cli db:seed:all
+   ```
+  
+
+
+## Usage
+
+1.Start the application in development mode:
+
+  ```
+  npm run dev
+  ```
+
+  This will start the server on http://localhost:3000.
+
+  Open your web browser and visit http://localhost:3000 to access the application.
+
+  You can also use a command-line tool like curl to make API requests. For example, to perform a login request:
+
+  curl -X POST http://localhost:3000/api/v1/login -d '{"userName": "testUser", "password": "password"}' -H "Content-Type: application/json"
+
+  Replace testUser with the desired username and password with the associated password.
+
+
+## Testing
+The project includes Mocha unit tests to ensure the correctness of the code. To run the tests, use the following command:
+
 ```
-
----
-
-## How do I modify the example API and make it my own?
-
-There are two key files:
-1. `server/routes.ts` - This references the implementation of all of your routes. Add as many routes as you like and point each route your express handler functions.
-2. `server/common/api.yaml` - This file contains your [OpenAPI spec](https://swagger.io/specification/). Describe your API here. It's recommended that you to declare any and all validation logic in this YAML. `express-no-stress-typescript`  uses [express-openapi-validator](https://github.com/cdimascio/express-openapi-validator) to automatically handle all API validation based on what you've defined in the spec.
-
-## Install Dependencies
-
-Install all package dependencies (one time operation)
-
-```shell
-npm install
-```
-
-## Run It
-#### Run in *development* mode:
-Runs the application is development mode. Should not be used in production
-
-```shell
-npm run dev
-```
-
-or debug it
-
-```shell
-npm run dev:debug
-```
-
-#### Run in *production* mode:
-
-Compiles the application and starts it in production production mode.
-
-```shell
-npm run compile
-npm start
-```
-
-## Test It
-
-Run the Mocha unit tests
-
-```shell
 npm test
 ```
 
-or debug them
-
-```shell
-npm run test:debug
-```
-
-## Try It
-* Open your browser to [http://localhost:3000](http://localhost:3000)
-* Invoke the `/examples` endpoint 
-  ```shell
-  curl http://localhost:3000/api/v1/examples
-  ```
-
-
-## Debug It
-
-#### Debug the server:
+## Build
+To compile the project for production deployment, use the following command:
 
 ```
-npm run dev:debug
+npm run compile
 ```
 
-#### Debug Tests
 
-```
-npm run test:debug
-```
-
-#### Debug with VSCode
-
-Add these [contents](https://github.com/cdimascio/generator-express-no-stress/blob/next/assets/.vscode/launch.json) to your `.vscode/launch.json` file
