@@ -13,11 +13,10 @@ import authenticateToken from '../middlewares/auth';
 const createSalaryValidationRules = [
   body('name').notEmpty().isString().withMessage('Name is required and must be a string'),
   body('salary')
-    .notEmpty().isInt().withMessage('Salary is required and must be an integer')
+    .notEmpty().isFloat({ gt: 0 }).withMessage('Salary is required and must be a number greater than 0')
     .custom((value) => {
-    
       if (!/^\d+(\.\d+)?$/.test(value)) {
-        throw new Error('Salary must be a valid integer or decimal value');
+        throw new Error('Salary must be a valid number or decimal value');
       }
       return true;
     }),
