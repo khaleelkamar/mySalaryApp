@@ -23,50 +23,49 @@ DB NAME : myappDb
 
    ```bash
    git clone https://github.com/khaleelkamar/mySalaryApp.git
+   ```
 
-2.Create a PostgreSQL database named "myappDb" to store the application data.
+2. Create a PostgreSQL database named "myappDb" to store the application data.
 
 Navigate to the project directory:
 
  ```
  cd mySalaryApp
-
  ```
 
-3.Install the project dependencies:
+3. Install the project dependencies:
 
   ```
   npm install
   ```
 
 
-  
-
-
 ## Usage
 
-1.Start the application in development mode:
+1. Start the application in development mode:
 
   ```
   npm run dev
   ```
   after successfully synchronizing the database, a success message will appear
 
-2.Run the database migrations and seed data to set up the initial data:
+2. Run the database migrations and seed data to set up the initial data:
 
   "Open a new terminal and simultaneously run the following commands in separate terminals or terminal tabs:"
 
-   ```
+  ```
    npx sequelize-cli db:seed:all
-   ```
-
+  ```
+  ```
+  after this u will get samplelogin username and password "userName": "testUser0", "password": "password"
+  ```
   This will start the server on http://localhost:3000.
 
   Open your web browser and visit http://localhost:3000 to access the application.
 
   You can also use a command-line tool like curl to make API requests. For example, to perform a login request:
 
-  curl -X POST http://localhost:3000/api/v1/login -d '{"userName": "testUser", "password": "password"}' -H "Content-Type: application/json"
+  curl -X POST http://localhost:3000/api/v1/login -d '{"userName": "testUser0", "password": "password"}' -H "Content-Type: application/json"
 
   Replace testUser with the desired username and password with the associated password.
 

@@ -15,10 +15,10 @@ const app = express();
 db.sequelize
 .sync({ force: false })
   .then(() => {
-    console.log("Synced db.");
+    console.log("Synced database.");
   })
   .catch((err: Error) => {
-    console.log("Failed to sync db: " + err.message);
+    console.log("Failed to sync database: " + err.message);
   });
   
 export default class ExpressServer {
